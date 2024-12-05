@@ -4,6 +4,7 @@ import itertools
 import numpy as np
 
 from collections import defaultdict
+from enum import Enum
 from numbers import Number
 from time import perf_counter_ns
 from typing import NamedTuple, Any
