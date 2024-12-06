@@ -1,4 +1,4 @@
-from config import Day, itertools, np
+from config import Day, pairwise
 
 class Day5(Day):
     def __init__(self, path: str):
@@ -9,8 +9,8 @@ class Day5(Day):
 
     def part1(self):
         return sum(
-            not any(pair in self.bad_pairs for pair in itertools.pairwise(string)) # no bad pair
-            and any(l1 == l2 for l1, l2 in itertools.pairwise(string)) # twin letters
+            not any(pair in self.bad_pairs for pair in pairwise(string)) # no bad pair
+            and any(l1 == l2 for l1, l2 in pairwise(string)) # twin letters
             and sum(char in self.vowels for char in string) >= 3 # triple vowels
             for string in self.strings
         )
