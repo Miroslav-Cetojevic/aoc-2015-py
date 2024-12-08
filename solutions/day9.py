@@ -6,11 +6,21 @@ class Day9(Day):
         super().__init__(path)
         self.places = set()
         self.paths = dict()
+
         for line in self.content.splitlines():
             tokens = line.split()
             locations = (tokens[0], tokens[2])
             self.places.update(locations)
             self.paths[frozenset(locations)] = int(tokens[-1])
+
+        self.adjacency_matrix = list()
+        for loc_id, origin in enumerate(self.places):
+            self.adjacency_matrix.append([])
+            for destination in self.places:
+                # print(origin, destination)
+                connection = frozenset((origin, destination))
+                distance = 0 if connection not in self.paths else self.paths[connection]
+                self.adjacency_matrix[loc_id].append(distance)
 
     def part1(self):
         shortest_path = sys.maxsize
