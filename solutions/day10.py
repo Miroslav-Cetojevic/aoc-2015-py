@@ -1,5 +1,4 @@
-from solutions.day import Day
-
+from config import Day
 
 class Day10(Day):
     def __init__(self, path: str):
