@@ -1,6 +1,7 @@
 import hashlib
-import heapq
 import itertools
+import math
+import operator
 import sys
 
 import numpy as np
@@ -10,6 +11,7 @@ from copy import deepcopy
 from dataclasses import dataclass
 from enum import Enum, StrEnum
 from functools import reduce
+from heapq import heapify, heappop, heappush, heapreplace
 from itertools import accumulate, pairwise
 from numbers import Number
 from pprint import pprint

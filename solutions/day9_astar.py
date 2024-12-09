@@ -1,4 +1,4 @@
-from config import dataclass, Day, heapq, NamedTuple
+from config import dataclass, Day, heapify, heappush, heappop, NamedTuple
 
 
 # conceptually the Visit class represents a bitset akin to C++'s std:bitset
@@ -19,7 +19,7 @@ class Visits:
 @dataclass
 class State:
     def __init__(self, first: int, last: int, visits: Visits):
-        # always make sure the locations (first and last) are sorted by id so we can
+        # always make sure the locations (first and last) are sorted, so we can
         # avoid creating equivalent states, thus reducing the search space in half
         # e.g. A->B->C is equivalent to C->B->A.
         self.first, self.last = sorted([first, last])
@@ -70,11 +70,11 @@ class Day9AStar(Day):
         self.scores = {self.begin_state: 0}
 
         self.queue = []
-        heapq.heapify(self.queue)
-        heapq.heappush(self.queue, (0, self.begin_state))
+        heapify(self.queue)
+        heappush(self.queue, (0, self.begin_state))
 
         while self.queue:
-            f_score, state = heapq.heappop(self.queue)
+            f_score, state = heappop(self.queue)
             g_score = self.scores[state]
 
             # A* uses the notation f = g + h, where f is a function of the sum of g and h,
@@ -101,7 +101,7 @@ class Day9AStar(Day):
                     # normally the result of the heuristic function would be added to
                     # new_score, but it's zero for this problem, so it's simply omitted
                     self.scores[next_state] = new_score
-                    heapq.heappush(self.queue, (new_score * self.factor, next_state))
+                    heappush(self.queue, (new_score * self.factor, next_state))
 
     def part1(self):
         self.factor = Factor.shortest
