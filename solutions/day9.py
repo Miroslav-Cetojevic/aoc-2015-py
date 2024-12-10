@@ -1,5 +1,30 @@
-from config import Day, pairwise, sys
-from support import permutations
+from config import Day, deepcopy, next_permutation, pairwise, sys
+
+def permutations(sequence: list):
+    result = list()
+
+    if not sequence or len(sequence) == 1:
+        result.append(sequence)
+    else:
+        sequence.sort()
+        filtered = set()
+
+        # given a sorted list, a completed set of permutations with the same first element
+        # means that any subsequent permutation with that element in the last position is
+        # a mirror to one of the existing permutations, i.e. same path, same distance.
+        # We skip these by updating our filter with each new element that appears first in
+        # a permutation. Once all elements of a permutation are in the filter, we are done.
+        while len(filtered) < len(sequence):
+            first = sequence[0]
+            last = sequence[-1]
+            if first not in filtered:
+                filtered.add(first)
+            if last not in filtered:
+                result.append(deepcopy(sequence))
+            if not next_permutation(sequence):
+                break
+
+    return result
 
 class Day9(Day):
     def __init__(self, path: str):

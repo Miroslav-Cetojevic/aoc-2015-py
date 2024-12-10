@@ -1,5 +1,3 @@
-import math
-
 from config import Day
 
 class Day2(Day):
