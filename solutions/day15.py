@@ -1,4 +1,4 @@
-from config import Day
+from config import Day, re
 
 # n = number of ingredients
 # total = how many teaspoons of all ingredients together
@@ -15,8 +15,12 @@ def mixtures(n_ingredients, n_teaspoons):
 class Day15(Day):
     def __init__(self, path: str):
         super().__init__(path)
-        self.ingredients = [[int(token.split()[1])
-                             for token in line.replace(', ', ',').split(': ')[1].split(',')]
+
+        # Regex pattern to match all integer numbers in the line
+        # -? for matching optional negative sign,
+        # \d+ for matching one or more digits
+        pattern = r'-?\d+'
+        self.ingredients = [[int(num) for num in re.findall(pattern, line)]
                             for line in self.content.splitlines()]
         self.n_ingredients = len(self.ingredients)
         self.n_properties = len(self.ingredients[0][:-1])
