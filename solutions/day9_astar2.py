@@ -1,13 +1,14 @@
 from config import dataclass, heappop, heappush, heapreplace, math, NamedTuple, operator
 from solutions.day import Day
 
+def triangle(n: int):
+    return (n * (n - 1)) // 2
 
 class AdjacencyMatrix(list):
     def __init__(self):
         super().__init__()
 
     def lookup(self, x, y):
-        triangle = lambda n: (n * (n - 1)) // 2
         min_id, max_id = sorted((x, y))
         return self.__getitem__(triangle(max_id) + min_id)
 

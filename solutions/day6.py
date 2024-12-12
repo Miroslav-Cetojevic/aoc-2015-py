@@ -1,4 +1,4 @@
-from config import Day, Enum, NamedTuple, np
+from config import Day, Enum, NamedTuple
 
 Cmd = Enum('Cmd', ['on', 'off', 'toggle'])
 
