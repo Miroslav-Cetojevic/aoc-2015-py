@@ -18,6 +18,7 @@ from solutions.day14 import Day14
 from solutions.day15 import Day15
 from solutions.day16 import Day16
 from solutions.day17 import Day17
+from solutions.day18 import Day18
 
 
 class Result(NamedTuple):
@@ -35,17 +36,17 @@ def avg_runtime(func, n):
 if __name__ == '__main__':
     # Day 9 notes: the first A* algorithm implementation uses the concept of C++'s std::bitset
     # to store the visited locations and seems to be the fastest solution for part 2 (max distance).
-    # The second A* algorithm implementation uses an adjacency matrix and a specialized heap,
+    # The second A* algorithm implementation uses dedicated adjacency matrix and a specialized heap,
     # which seems to be the fastest solution for part 1 (min distance)
     day9 = {'brute': Day9, 'astar': Day9AStar, 'astar2': Day9AStar2}
 
     all_days = [Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, day9['astar2'], Day10,
-                Day11, Day12, Day13, Day14, Day15, Day16, Day17]
+                Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18]
     journal = {i: func for i, func in enumerate(all_days, start=1)}
 
     index = len(all_days)
     # index = 9
     chosen_day = journal[index](join('inputs', f'day{index}-input'))
-    print('Part 1:', avg_runtime(chosen_day.part1, 1))
-    print('Part 2:', avg_runtime(chosen_day.part2, 1))
+    print('Part 1:', avg_runtime(chosen_day.part1, 10))
+    print('Part 2:', avg_runtime(chosen_day.part2, 10))
 
