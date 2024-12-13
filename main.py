@@ -20,6 +20,7 @@ from solutions.day16 import Day16
 from solutions.day17 import Day17
 from solutions.day18 import Day18
 from solutions.day19 import Day19
+from solutions.day20 import Day20
 
 
 class Result(NamedTuple):
@@ -42,12 +43,12 @@ if __name__ == '__main__':
     day9 = {'brute': Day9, 'astar': Day9AStar, 'astar2': Day9AStar2}
 
     all_days = [Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, day9['astar2'], Day10,
-                Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19]
+                Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20]
     journal = {i: func for i, func in enumerate(all_days, start=1)}
 
     index = len(all_days)
     # index = 9
     chosen_day = journal[index](join('inputs', f'day{index}-input'))
-    print('Part 1:', avg_runtime(chosen_day.part1, 10_000))
-    print('Part 2:', avg_runtime(chosen_day.part2, 10_000))
+    print('Part 1:', avg_runtime(chosen_day.part1, 1))
+    print('Part 2:', avg_runtime(chosen_day.part2, 1))
 
