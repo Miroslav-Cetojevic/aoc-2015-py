@@ -14,7 +14,8 @@ from dataclasses import dataclass
 from enum import Enum, StrEnum
 from functools import reduce
 from heapq import heapify, heappop, heappush, heapreplace
-from itertools import accumulate, pairwise
+from itertools import accumulate, combinations, pairwise, product
+from math import ceil
 from numbers import Number
 from operator import itemgetter
 from pprint import pprint
@@ -25,4 +26,4 @@ from typing import Callable, NamedTuple, Sequence
 from os.path import join
 
 from solutions.day import Day
-from support import next_permutation
+from support import permutations
